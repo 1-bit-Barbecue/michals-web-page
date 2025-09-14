@@ -1,0 +1,22 @@
+{
+  "name": "michals-web-page",
+  "version": "1.0.0",
+  "description": "Home page for Michal Brabec",
+  "main": "index.js",
+  "homepage": "https://1-bit-barbecue.github.io/michals-web-page/",
+  "scripts": {
+    "deploy": "pnpm run --recursive --if-present deploy",
+    "test": "pnpm run --recursive --if-present test",
+    "dev": "pnpm run --recursive --if-present dev",
+    "build": "pnpm run --recursive --if-present build",
+    "start": "pnpm run --recursive --if-present start",
+    "lint": "pnpm run --recursive --if-present lint"
+  },
+  "keywords": [],
+  "author": "Michal Brabec",
+  "license": "GPL-3.0-only",
+  "packageManager": "pnpm@10.14.0",
+  "dependencies": {
+    "react": "19.1.0"
+  }
+}
