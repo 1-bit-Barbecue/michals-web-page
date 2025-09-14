@@ -1,0 +1,16 @@
+{
+    "Home": {
+        "Home": "home/index.md"
+    },
+    "Electronics": {
+        "Home": "electronics/home/index.md",
+        "Logic": {
+            "Latch": "electronics/logic/latch/index.md",
+            "Flip": "electronics/logic/latch/index.md",
+            "Logic": {
+                "Latch": "electronics/logic/latch/index.md",
+                "Flip": "electronics/logic/latch/index.md"
+            }
+        }
+    }
+}
