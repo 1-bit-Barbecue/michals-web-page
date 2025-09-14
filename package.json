@@ -5,7 +5,7 @@
   "main": "index.js",
   "homepage": "https://1-bit-barbecue.github.io/michals-web-page/",
   "scripts": {
-    "deploy": "pnpm run --recursive --if-present deploy",
+    "deploy": "git subtree push --prefix packages/page/dist origin gh-pages",
     "test": "pnpm run --recursive --if-present test",
     "dev": "pnpm run --recursive --if-present dev",
     "build": "pnpm run --recursive --if-present build",

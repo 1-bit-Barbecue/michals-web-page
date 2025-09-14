@@ -1,11 +1,10 @@
 {
-  "name": "pack",
+  "name": "page",
   "version": "1.0.0",
   "description": "Home page of Michal Brabec",
   "private": true,
   "type": "module",
   "scripts": {
-    "deploy": "git subtree push --prefix packages/page/dist origin gh-pages",
     "lint": "pnpm prettier --check && pnpm eslint",
     "lint:fix": "pnpm prettier --write && pnpm eslint --fix",
     "eslint": "eslint \"dist/**/*.js\" \"dist/**/*.js\"",
