@@ -15,8 +15,5 @@
   "keywords": [],
   "author": "Michal Brabec",
   "license": "GPL-3.0-only",
-  "packageManager": "pnpm@10.14.0",
-  "dependencies": {
-    "react": "19.1.0"
-  }
+  "packageManager": "pnpm@10.14.0"
 }

@@ -1,8 +1,8 @@
 :root {
-  --top-menu-height: 3em;
-  --side-menu-width: 8em;
-  --menu-control-width: 0.6em;
-  --transition-timeout: 0.5s;
+    --top-menu-height: 3em;
+    --side-menu-width: 8em;
+    --menu-control-width: 0.6em;
+    --transition-timeout: 0.5s;
 }
 
 body {
@@ -13,15 +13,15 @@ body {
 }
 
 @media screen and (min-width: 640px) {
-  body {
-    font-size: 3vw;
-  }
+    body {
+        font-size: 3vw;
+    }
 }
 
 @media screen and (min-width: 768px) {
-  body {
-    font-size: 2vw;
-  }
+    body {
+        font-size: 2vw;
+    }
 }
 
 img {
@@ -38,60 +38,7 @@ img {
     display: flex;
     flex-direction: column;
     transition: top var(--transition-timeout);
-}
-
-.top-menu-field {
-    flex: 1; 
-    justify-content: center; 
-    display: flex;
-}
-
-.top-menu-buttons {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    background-color: chartreuse;
-}
-
-.menu-icon {
-    background-color: lightsalmon;
-    aspect-ratio: 1;
-    padding: 0.05em;
-}
-
-.menu-icon-image {
-    max-width: 100%;
-    max-height: 100%;
-}
-
-.side-menu {
-    position:fixed;
-    top: calc(var(--top-menu-height) + var(--menu-control-width));
-    left: 0;
-    height: 100%;
-    width: calc(var(--side-menu-width) + var(--menu-control-width));
-    background-color: orange;
-    transition: left var(--transition-timeout), top var(--transition-timeout);
-    display: flex;
-}
-
-.side-menu-buttons {
-    display: flex;
-    flex-direction: column;
-    background-color: chartreuse;
-}
-
-.side-menu-content {
-    flex-grow: 1;
-    background-color: lightblue;
-    width: 0.1em;
-}
-
-.side-menu-control {
-    display: flex;
-    flex-direction: column;
-    background-color: lightyellow;
-    height: 100%;
-    width: var(--menu-control-width);
+    overflow: hidden;
 }
 
 .top-menu-content {
@@ -107,7 +54,74 @@ img {
     justify-content: end;
     background-color: lightyellow;
     height: var(--menu-control-width);
-    width: 100%;
+}
+
+.top-menu-field {
+    flex: 1;
+    justify-content: center;
+    display: flex;
+}
+
+.top-menu-buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    background-color: chartreuse;
+}
+
+.top-menu-text {
+    background-color: rgba(255, 192, 203, 0.7);
+    text-align: center;
+}
+
+.side-menu {
+    position: fixed;
+    top: calc(var(--top-menu-height) + var(--menu-control-width));
+    left: 0;
+    height: 100%;
+    width: calc(var(--side-menu-width) + var(--menu-control-width));
+    background-color: orange;
+    transition: left var(--transition-timeout), top var(--transition-timeout);
+    display: flex;
+}
+
+.side-menu-content {
+    flex-grow: 1;
+    background-color: lightblue;
+    width: 0.1em;
+    overflow: scroll;
+    scrollbar-width: 0;
+}
+
+.side-menu-control {
+    display: flex;
+    flex-direction: column;
+    background-color: lightyellow;
+    height: 100%;
+    width: var(--menu-control-width);
+}
+
+.side-menu-buttons {
+    transition: height var(--transition-timeout);
+    display: flex;
+    flex-direction: column;
+    background-color: chartreuse;
+    padding: 0.1em 0;
+}
+
+.side-menu-text {
+    background-color: rgba(255, 192, 203, 0.7);
+    user-select: none;
+}
+
+.menu-icon {
+    background-color: lightsalmon;
+    aspect-ratio: 1;
+    padding: 0.05em;
+}
+
+.menu-icon-image {
+    max-width: 100%;
+    max-height: 100%;
 }
 
 .button:hover {
@@ -122,27 +136,19 @@ img {
     flex-direction: column;
     justify-content: center;
     background-color: aqua;
+    height: auto;
 }
 
 .menu-control {
-    transition: transform var(--transition-timeout);
+    transition: transform var(--transition-timeout), rotate var(--transition-timeout);
     height: var(--menu-control-width);
     width: var(--menu-control-width);
 }
 
 .menu-glyph {
-    fill:none;
-    stroke:gray;
-    stroke-width:3;
-}
-
-.top-menu-text {
-    background-color: rgba(255, 192, 203, 0.7);
-    text-align: center;
-}
-
-.side-menu-text {
-    background-color: rgba(160, 255, 203, 0.7);
+    fill: none;
+    stroke: gray;
+    stroke-width: 4;
 }
 
 .main {
@@ -184,7 +190,7 @@ img {
 
 .expand-vertical {
     margin-top: var(--menu-control-width);
-    min-height: calc(100vh );
+    min-height: calc(100vh - var(--menu-control-width));
 }
 
 .hide-vertical {
@@ -193,4 +199,12 @@ img {
 
 .extend-vertical {
     top: var(--menu-control-width);
+}
+
+.collapse {
+    height: 0;
+}
+
+.rotate {
+    rotate: -90deg;
 }

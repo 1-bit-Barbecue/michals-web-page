@@ -1,11 +1,9 @@
 async function openPage(path) {
-    const { origin } = URL.parse(document.URL)
     const response = await fetch(`./pages/${path}`)
-    const md = await response.text()
-    document.getElementById("content").innerHTML = parse(md, {});
+    document.getElementById("content").innerHTML = parse(await response.text(), {});
 }
 
-async function generateSection(name, indent, sections) {
+async function generateSection(name, path, indent, sections) {
     let buttons = ""
     for (let section in sections) {
         if (typeof sections[section] === 'string') {
@@ -18,20 +16,31 @@ async function generateSection(name, indent, sections) {
             `;
         }
         else {
-            buttons += await generateSection(section, indent + 1, sections[section])
+            buttons += await generateSection(section, `${path}-${name}`, indent + 1, sections[section])
         }
     }
-    return `
-        <div class="side-menu-buttons" id="side-menu-buttons">
-            <div style="margin-left: ${indent-1}em">${name}</div>
+    const id = `side-menu-buttons-${path}-${name}`
+    let res = ""
+    if (name) {
+        res = `
+        <div class="side-menu-text" style="margin-left: ${indent - 1}em"  onclick="toggleSection('${id}')">
+            <svg viewBox="0,0,40,20" xmlns="http://www.w3.org/2000/svg" id="${id}-arrow" class="menu-control">
+                <path d="M3 3 L20 17 L37 3" class="menu-glyph" />
+            </svg>
+            ${name}
+        </div>
+    `;
+    }
+    return res + `
+        <div class="side-menu-buttons" id="${id}">
             ${buttons}
         </div>
     `;
 }
 
 async function openSection(sections) {
-    document.getElementById('side-menu-content').innerHTML = await generateSection("", 0, sections)
-    if(document.getElementById('side-menu').classList.contains('hide-horizontal')) {
+    document.getElementById('side-menu-content').innerHTML = await generateSection("", "", 0, sections)
+    if (document.getElementById('side-menu').classList.contains('hide-horizontal')) {
         toggleSideMenu()
     }
     await openPage(sections['Home'])
@@ -51,38 +60,34 @@ async function loadStructure() {
                 </div>
                 `;
     }
-    document.getElementById('top-menu-buttons').style.gridTemplateColumns=`repeat(${Object.keys(dir).length}, 1fr)`
+    document.getElementById('top-menu-buttons').style.gridTemplateColumns = `repeat(${Object.keys(dir).length}, 1fr)`
     document.getElementById('top-menu-buttons').innerHTML = buttons
 
     for (let section in dir) {
         document.getElementById(`top-menu-${section}`).addEventListener('click', async e => await openSection(dir[section]))
     }
 
-    openSection(dir.Home)
+    if (dir.Home) {
+        openSection(dir.Home)
+    }
 }
 
-function toggleSideMenu() {
+async function toggleSideMenu() {
     document.getElementById('side-menu').classList.toggle('hide-horizontal')
     document.getElementById('main').classList.toggle('expand-horizontal')
     document.getElementById('side-menu-control-arrow').classList.toggle('flip-horizontal')
 }
 
-function toggleTopMenu() {
+async function toggleTopMenu() {
     document.getElementById('side-menu').classList.toggle('extend-vertical')
     document.getElementById('top-menu').classList.toggle('hide-vertical')
     document.getElementById('main').classList.toggle('expand-vertical')
     document.getElementById('top-menu-control-arrow').classList.toggle('flip-vertical')
 }
 
-async function main() {
-    await loadStructure()
-
-    {
-        document.getElementById('side-menu-control')?.addEventListener('click', toggleSideMenu)
-    }
-    {
-        document.getElementById('top-menu-control')?.addEventListener('click', toggleTopMenu)
-    }
+async function toggleSection(id) {
+    document.getElementById(id).classList.toggle('collapse')
+    document.getElementById(id + '-arrow').classList.toggle('rotate')
 }
 
-main()
+loadStructure()

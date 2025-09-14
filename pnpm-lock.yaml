@@ -6,13 +6,9 @@ settings:
 
 importers:
 
-  .:
-    dependencies:
-      react:
-        specifier: 19.1.0
-        version: 19.1.0
+  .: {}
 
-  packages/funding:
+  packages/donations:
     devDependencies:
       '@nomicfoundation/hardhat-ignition':
         specifier: ^3.0.3
@@ -1005,10 +1001,6 @@ packages:
 
   react-is@18.3.1:
     resolution: {integrity: sha512-/LLMVyas0ljjAtoYiPqYiL8VWXzUUdThrmU5+n20DZv+a+ClRoevUzw5JxU+Ieh5/c87ytoTBV9G1FiKfNJdmg==}
-
-  react@19.1.0:
-    resolution: {integrity: sha512-FS+XFBNvn3GTAWq26joslQgWNoFu08F4kl0J4CgdNKADkdSGXQyTCnKteIAJy96Br6YbpEU1LSzV5dYtjMkMDg==}
-    engines: {node: '>=0.10.0'}
 
   readable-stream@3.6.2:
     resolution: {integrity: sha512-9u/sniCrY3D5WdsERHzHE4G2YCXqoG5FTHUiCC4SIbr6XcLZBY05ya9EKjYek9O5xOAwjGq+1JdGBAS7Q9ScoA==}
@@ -2211,8 +2203,6 @@ snapshots:
   punycode@2.3.1: {}
 
   react-is@18.3.1: {}
-
-  react@19.1.0: {}
 
   readable-stream@3.6.2:
     dependencies:
