@@ -1,6 +1,6 @@
 async function openPage(path) {
     const { origin } = URL.parse(document.URL)
-    const response = await fetch(`${origin}/packages/page/dist/pages/${path}`)
+    const response = await fetch(`./pages/${path}`)
     const md = await response.text()
     document.getElementById("content").innerHTML = parse(md, {});
 }
@@ -38,8 +38,7 @@ async function openSection(sections) {
 }
 
 async function loadStructure() {
-    const { origin } = URL.parse(document.URL)
-    const response = await fetch(`${origin}/packages/page/dist/pages/dir.json`)
+    const response = await fetch(`./pages/dir.json`)
     const dir = JSON.parse(await response.text())
 
     let buttons = ""
@@ -76,12 +75,6 @@ function toggleTopMenu() {
 }
 
 async function main() {
-    //     const md = `# H1
-    // ## H2
-    // BODY
-    // `
-    //     return await parse(md, {});
-
     await loadStructure()
 
     {
