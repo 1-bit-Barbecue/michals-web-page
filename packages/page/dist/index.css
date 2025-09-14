@@ -88,8 +88,6 @@ img {
     flex-grow: 1;
     background-color: lightblue;
     width: 0.1em;
-    overflow: scroll;
-    scrollbar-width: 0;
 }
 
 .side-menu-control {
