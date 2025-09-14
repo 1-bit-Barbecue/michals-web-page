@@ -1,7 +1,7 @@
 :root {
   --top-menu-height: 3em;
   --side-menu-width: 8em;
-  --menu-control-width: 0.5em;
+  --menu-control-width: 0.6em;
   --transition-timeout: 0.5s;
 }
 
@@ -171,7 +171,7 @@ img {
 }
 
 .expand-horizontal {
-    margin-left: 0;
+    margin-left: var(--menu-control-width);
 }
 
 .hide-horizontal {
@@ -183,7 +183,7 @@ img {
 }
 
 .expand-vertical {
-    margin-top: 0;
+    margin-top: var(--menu-control-width);
     min-height: calc(100vh );
 }
 
