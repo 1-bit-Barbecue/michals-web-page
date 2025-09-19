@@ -27,7 +27,7 @@ async function generateSection(name, path, indent, sections) {
             <svg viewBox="0,0,40,20" xmlns="http://www.w3.org/2000/svg" id="${id}-arrow" class="menu-control">
                 <path d="M3 3 L20 17 L37 3" class="menu-glyph" />
             </svg>
-            ${name}
+            <b>${name}</b>
         </div>
     `;
     }
@@ -47,9 +47,6 @@ async function openSection(sections) {
 }
 
 async function loadStructure() {
-    const response = await fetch(`./pages/dir.json`)
-    const dir = JSON.parse(await response.text())
-
     let buttons = ""
     for (let section in dir) {
         buttons += `
