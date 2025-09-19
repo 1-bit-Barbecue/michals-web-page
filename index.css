@@ -1,8 +1,8 @@
 :root {
     --top-menu-height: 3em;
-    --side-menu-width: 8em;
-    --menu-control-width: 0.6em;
-    --transition-timeout: 0.5s;
+    --side-menu-width: 6em;
+    --menu-control-width: 0.5em;
+    --transition-timeout: 0.3s;
 }
 
 body {
@@ -43,7 +43,7 @@ img {
 
 .top-menu-content {
     flex-grow: 1;
-    background-color: lightblue;
+    background-color: #efefef;
     display: flex;
     justify-content: center;
     height: var(--top-menu-height);
@@ -52,7 +52,8 @@ img {
 .top-menu-control {
     display: flex;
     justify-content: end;
-    background-color: lightyellow;
+    cursor: pointer;
+    background: linear-gradient(to top,#777777 0%, #dddddd 30%, #efefef 100%);
     height: var(--menu-control-width);
 }
 
@@ -65,35 +66,37 @@ img {
 .top-menu-buttons {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    background-color: chartreuse;
 }
 
 .top-menu-text {
-    background-color: rgba(255, 192, 203, 0.7);
     text-align: center;
+    padding: 0 0.2em;
 }
 
 .side-menu {
     position: fixed;
     top: calc(var(--top-menu-height) + var(--menu-control-width));
     left: 0;
-    height: 100%;
+    height: calc(100vh - var(--top-menu-height) - var(--menu-control-width));
     width: calc(var(--side-menu-width) + var(--menu-control-width));
     background-color: orange;
-    transition: left var(--transition-timeout), top var(--transition-timeout);
+    transition: left var(--transition-timeout), height var(--transition-timeout), top var(--transition-timeout);
     display: flex;
 }
 
 .side-menu-content {
     flex-grow: 1;
-    background-color: lightblue;
+    background-color: #efefef;
     width: 0.1em;
+    overflow-y: auto;
+    scrollbar-color: #dddddd #efefef;
 }
 
 .side-menu-control {
     display: flex;
     flex-direction: column;
-    background-color: lightyellow;
+    background: linear-gradient(to left,#777777 0%, #dddddd 30%, #efefef 100%);
+    cursor: pointer;
     height: 100%;
     width: var(--menu-control-width);
 }
@@ -102,23 +105,22 @@ img {
     transition: height var(--transition-timeout);
     display: flex;
     flex-direction: column;
-    background-color: chartreuse;
     overflow: hidden;
     padding: 0.1em 0;
 }
 
 .side-menu-text {
-    background-color: rgba(255, 192, 203, 0.7);
     user-select: none;
+    cursor: pointer;
 }
 
 .menu-icon {
-    background-color: lightsalmon;
     aspect-ratio: 1;
-    padding: 0.05em;
+    padding: 0.2em;
 }
 
 .menu-icon-image {
+    border-radius: 5%;
     max-width: 100%;
     max-height: 100%;
 }
@@ -134,8 +136,9 @@ img {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    background-color: aqua;
     height: auto;
+    cursor: pointer;
+    transition: background-color var(--transition-timeout);
 }
 
 .menu-control {
@@ -157,7 +160,7 @@ img {
     margin-right: 0;
     display: flex;
     flex-direction: column;
-    background-color: blanchedalmond;
+    background-color: #efefef;
     transition: margin var(--transition-timeout), min-height var(--transition-timeout);
     min-height: calc(100vh - var(--top-menu-height) - var(--menu-control-width));
 }
@@ -168,7 +171,7 @@ img {
 }
 
 .footer {
-    background-color: aqua;
+    background-color: #dddddd;
 }
 
 .flip-horizontal {
@@ -198,6 +201,7 @@ img {
 
 .extend-vertical {
     top: var(--menu-control-width);
+    height: calc(100vh - var(--menu-control-width));
 }
 
 .collapse {
