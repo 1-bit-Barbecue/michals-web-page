@@ -49,7 +49,7 @@ The cannot be opened directly in a browser (without a server), because it won't 
 The page is designed for deployment in [GitHub pages](https://docs.github.com/en/pages). The pages can deploy pages only from the root of the repository. The page is deployed using a `git subtree` that basically creates a branch with only the sub-tree so GitHub pages can deploy from the branch with the page in root. The page is deployed byt the following command triggered from the repository root.
 
 ```bash
-pnpm deploy
+pnpm run deploy
 ```
 
 The deployment uses the following command to create a branch `gh-pages` with the page in the root.
