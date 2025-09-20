@@ -1,0 +1,25 @@
+
+table {
+    border-collapse: collapse;
+}
+
+th {
+    background-color: #dddddd;
+    border: 0.1em solid #555555;
+    padding: .1em 1em;
+}
+
+td {
+    border: 0.1em solid #555555;
+    padding: .1em 1em;
+}
+
+blockquote {
+    border-left: 0.1em solid #aaaaaa;
+    padding-left: .2em;
+    margin: .2em .5em;
+}
+
+blockquote p {
+    margin: 0;
+}

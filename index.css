@@ -9,7 +9,7 @@ body {
     padding: 0;
     margin: 0;
     font-size: 5vw;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: "Roboto", "Arial", sans-serif;
 }
 
 @media screen and (min-width: 640px) {
@@ -65,6 +65,7 @@ img {
 
 .top-menu-buttons {
     display: grid;
+    row-gap: 1em;
     grid-template-columns: repeat(4, 1fr);
 }
 
@@ -126,7 +127,8 @@ img {
 }
 
 .button:hover {
-    background-color: lightgray;
+    /* background-color: lightgray; */
+    background: linear-gradient(to top,#efefef 0%, #dddddd 30%, #dddddd 60%, #efefef 100%);
 }
 
 .menu-button {

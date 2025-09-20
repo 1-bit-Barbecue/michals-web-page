@@ -1,6 +1,6 @@
 async function openPage(path) {
     const response = await fetch(`./pages/${path}`)
-    document.getElementById("content").innerHTML = parse(await response.text(), {});
+    document.getElementById("content").innerHTML = await response.text();
 }
 
 async function generateSection(name, path, indent, sections) {
