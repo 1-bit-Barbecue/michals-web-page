@@ -1,6 +1,10 @@
 async function openPage(path) {
-    const response = await fetch(`./pages/${path}`)
+    const response = await fetch(path)
     document.getElementById("content").innerHTML = await response.text();
+}
+
+async function trimNumbering(name) {
+    return name.substring(name.indexOf('_') + 1).replace("_", " ")
 }
 
 async function generateSection(name, path, indent, sections) {
@@ -10,7 +14,7 @@ async function generateSection(name, path, indent, sections) {
             buttons += `
                 <div class="menu-button button" id="side-menu-${section}" style="margin-left: ${indent}em" onClick="openPage('${sections[section]}')">
                     <div class="side-menu-text">
-                        ${section}
+                        ${await trimNumbering(section)}
                     </div>
                 </div>
             `;
@@ -27,7 +31,7 @@ async function generateSection(name, path, indent, sections) {
             <svg viewBox="0,0,40,20" xmlns="http://www.w3.org/2000/svg" id="${id}-arrow" class="menu-control">
                 <path d="M3 3 L20 17 L37 3" class="menu-glyph" />
             </svg>
-            <b>${name}</b>
+            <b>${await trimNumbering(name)}</b>
         </div>
     `;
     }
@@ -43,7 +47,7 @@ async function openSection(sections) {
     if (document.getElementById('side-menu').classList.contains('hide-horizontal')) {
         toggleSideMenu()
     }
-    await openPage(sections['Home'])
+    await openPage(sections[Object.keys(sections)[0]])
 }
 
 async function loadStructure() {
@@ -52,7 +56,7 @@ async function loadStructure() {
         buttons += `
                 <div class="menu-button button" id="top-menu-${section}">
                     <div class="top-menu-text">
-                        ${section}
+                        ${await trimNumbering(section)}
                     </div>
                 </div>
                 `;

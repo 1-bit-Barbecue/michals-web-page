@@ -1,5 +1,5 @@
 import { parse } from "marked";
-import { readdir, readFile, writeFile, mkdir, access, constants, copyFile } from "fs/promises";
+import { readdir, readFile, writeFile, mkdir, access, constants, copyFile, rm } from "fs/promises";
 import { join } from "path";
 import { argv } from "process";
 
@@ -12,37 +12,60 @@ async function forEachFileRecursive(path, filter, func) {
         await mkdir(dir)
     }
     const entries = await readdir(path, { withFileTypes: true });
-    entries
-        .filter(entry => !entry.isDirectory() && entry.name.endsWith(filter))
-        .forEach(f => func(join(path, f.name)))
-    entries
-        .filter(entry => entry.isDirectory())
-        .forEach(async d => forEachFileRecursive(join(path, d.name), filter, func))
+    for (const p of entries) {
+        if (p.isDirectory()) {
+            await forEachFileRecursive(join(path, p.name), filter, func)
+        }
+        else if (p.name.endsWith(filter)) {
+            await func(join(path, p.name))
+        }
+    }
 }
 
-async function converMarkdownToHtml(path) {
-    const outputPath = join("dist", path+".html")
-    console.log(`Converting ${path} to ${outputPath}`)
-    const content = await readFile(path, "utf8")
-    const html = await parse(content)
-    await writeFile(outputPath, html, )
-}
+async function main(path, output) {
+    const pages = join(output, path)
+    try {
+        await access(pages, constants.F_OK)
+        await rm(pages, { recursive: true, force: true })
+    }
+    catch {
+    }
 
-if (process.argv.length <= 3) {
-    console.log("Recursively converts all markdown files in a directory to HTML. Usage: node build PATH_TO_PAGES OUTPUT")
-}
-else {
-    forEachFileRecursive(argv[2], ".md", async path => {
-        const outputPath = join(argv[3], path+".html")
+    await forEachFileRecursive(path, ".md", async path => {
+        const outputPath = join(output, path + ".html")
         console.log(`Converting ${path} to ${outputPath}`)
         const content = await readFile(path, "utf8")
         const html = await parse(content)
         await writeFile(outputPath, html)
     })
-    forEachFileRecursive(argv[2], ".png", async path => {
-        const outputPath = join(argv[3], path)
+    await forEachFileRecursive(path, ".png", async path => {
+        const outputPath = join(output, path)
         console.log(`Copying ${path} to ${outputPath}`)
         await copyFile(path, outputPath)
     })
-    await copyFile(join(argv[2], "dir.js"), join(argv[3], "dir.js"))
+    let dir = {}
+    await forEachFileRecursive(path, ".md", async path => {
+        const split = path.split('/')
+        let tmp = dir
+        for (let l of split) {
+            if (l.endsWith(".md")) {
+                tmp[l.split('.')[0]] = path + ".html"
+            }
+            else {
+                if (!tmp[l]) {
+                    tmp[l] = {}
+                }
+                tmp = tmp[l]
+            }
+        }
+    })
+    await writeFile(join(output, "dir.js"), "const dir = JSON.parse('" + JSON.stringify(dir.pages) + "')")
+}
+
+
+if (process.argv.length <= 3) {
+    console.log("Recursively converts all markdown files in a directory to HTML. Usage: node build PATH_TO_PAGES OUTPUT")
+}
+else {
+    await main(argv[2], argv[3])
 }
