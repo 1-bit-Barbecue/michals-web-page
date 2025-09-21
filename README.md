@@ -38,8 +38,6 @@ The page can be built using the following command. The build converts Markdown c
 pnpm build
 ```
 
-The build also copies the file `packages/page/pages/dir.js` to `dist/packages/page/pages/dir.js` making sure that the page can find it.
-
 The site can be tested locally using [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer). In VSCode:
 - Install Live Server
 - Right-click `packages/page/dist/index.html` and pick `Open with Live Server` 
@@ -63,27 +61,12 @@ The GitHub pages must be then configured to deploy from the `gh-pages` branch. I
 ## Contributing Content
 
 All content is in the directory `packages/page/pages`.
-- The pages are defined in Markdown and must be in the directory, they can be in sub-directories
+- The pages are defined in Markdown
+- Pages can be in sub-directories
 - Images must be in `png` format
-- The site structure is defined in `packages/page/pages/dir.js`
-    - The top level properties define buttons in the top menu
+- The site structure is based on the `packages/page/pages` directory structure
+    - The top level directories define buttons in the top menu
     - The deeper levels define buttons in the side menu
-    - The side menu is structured and creating sup-properties defines sub-sections there
-
-The menu structure is best show in an example. The following setup creates top menu containing the buttons `Home` and `Electronics`. The side menu for the button `Home` will contain buttons `Home` and `Plane`. The side menu for `Electronics` will contain a button `Home` and a section titled `Logic` with the buttons `Latch` and `Flip`.
-
-```javascript
-const dir = {
-    Home: {
-        Home: "home/index.md.html",
-        Plane: "electronics/home/index.md.html",
-    },
-    Electronics: {
-        Home: "electronics/home/index.md.html",
-        Logic: {
-            Latch: "electronics/logic/latch/index.md.html",
-            Flip: "electronics/logic/latch/index.md.html"
-        }
-    }
-}
-```
+    - Sub-directories define collapsible sections in the side menu
+    - The pages are ordered by prefixing each with the `NUMBER_*`, the number defines order and is removed before the sections are rendered
+    - The page files should use `_` instead of spaces, the page logic replaces them for spaces
