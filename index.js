@@ -44,8 +44,15 @@ async function generateSection(name, path, indent, sections) {
 
 async function openSection(sections) {
     document.getElementById('side-menu-content').innerHTML = await generateSection("", "", 0, sections)
-    if (await isSideMenuExpanded()) {
-        toggleSideMenu()
+    if (Object.keys(sections).length < 2) {
+        if (!(await isSideMenuHidden())) {
+            toggleSideMenu()
+        }
+    }
+    else {
+        if (await isSideMenuHidden()) {
+            toggleSideMenu()
+        }
     }
     await openPage(sections[Object.keys(sections)[0]])
 }
@@ -79,7 +86,7 @@ async function toggleSideMenu() {
     document.getElementById('side-menu-control-arrow').classList.toggle('flip-horizontal')
 }
 
-async function isSideMenuExpanded() {
+async function isSideMenuHidden() {
     return document.getElementById('side-menu').classList.contains('hide-horizontal')
 }
 
