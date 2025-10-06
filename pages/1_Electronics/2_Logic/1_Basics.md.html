@@ -1,0 +1,179 @@
+<h1>Electronic Logic</h1>
+<p>Transistors, vacuum tubes and (to a lesser degree) diodes can be used to create electronic switches which can be in turn used to build logic circuits. The logic circuits can be combined to build logic systems following the rules of <a href="https://en.wikipedia.org/wiki/Boolean_algebra">Boolean algebra</a>.</p>
+<p>The <a href="https://en.wikipedia.org/wiki/Boolean_algebra">Boolean algebra</a> is defined by binary variables and basic logic operations. Each boolean variable can be either <math><mn>0</mn></math> or <math><mn>1</mn></math> and the algebra defines 3 basic operations <math><mo>and</mo></math>, <math><mo>or</mo></math> and <math><mo>not</mo></math>. The operations are defined using truth tables bellow.</p>
+<ul>
+<li><p><math><mo>not</mo></math> - the operation returns the inverse of the value of the argument</p>
+<table>
+<thead>
+<tr>
+<th><math><mi>x</mi></math></th>
+<th><math><mover><mi>x</mi><mo>‾</mo></mover></math></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>1</td>
+<td>0</td>
+</tr>
+</tbody></table>
+</li>
+<li><p><math><mo>and</mo></math> - the operation results in <math><mn>1</mn></math> only if both arguments are <math><mn>1</mn></math>, otherwise the result is <math><mn>0</mn></math></p>
+<table>
+<thead>
+<tr>
+<th><math><mi>x</mi></math></th>
+<th><math><mi>y</mi></math></th>
+<th><math><mi>x</mi><mo>.</mo><mi>y</mi></math></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+</tbody></table>
+</li>
+<li><p><math><mo>or</mo></math> - the operation results in <math><mn>1</mn></math> if either of its argument are <math><mn>1</mn></math>, otherwise the result is <math><mn>0</mn></math>otherwise</p>
+<table>
+<thead>
+<tr>
+<th><math><mi>x</mi></math></th>
+<th><math><mi>y</mi></math></th>
+<th><math><mi>x</mi><mo>+</mo><mi>y</mi></math></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+</tbody></table>
+</li>
+</ul>
+<h1>Logic Gates</h1>
+<p>Logic systems are built from logic gates, which represent logic operations of the <a href="https://en.wikipedia.org/wiki/Boolean_algebra">Boolean algebra</a>. It is possible to build gates implementing the basic operations <math><mo>and</mo></math>, <math><mo>or</mo></math> and <math><mo>not</mo></math>, but it is possible to build all possible operations using <math><mo>nand</mo></math> or <math><mo>nor</mo></math> gates, defined bellow.</p>
+<ul>
+<li><p><math><mo>nand</mo></math> - inverse of the <math><mo>and</mo></math> operation</p>
+<table>
+<thead>
+<tr>
+<th><math><mi>x</mi></math></th>
+<th><math><mi>y</mi></math></th>
+<th><math><mover><mrow><mi>x</mi><mo>.</mo><mi>y</mi></mrow><mo>‾</mo></mover></math></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+</tbody></table>
+</li>
+<li><p><math><mo>nor</mo></math> - inverse of the <math><mo>or</mo></math> operation</p>
+<table>
+<thead>
+<tr>
+<th><math><mi>x</mi></math></th>
+<th><math><mi>y</mi></math></th>
+<th><math><mover><mrow><mi>x</mi><mo>+</mo><mi>y</mi></mrow><mo>‾</mo></mover></math></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+</tbody></table>
+</li>
+</ul>
+<p>The basic operations can be built using a combination of only <math><mo>nand</mo></math> or <math><mo>nor</mo></math> gates:</p>
+<ul>
+<li><math><mo>nand</mo></math><ul>
+<li><math><mover><mi>x</mi><mo>‾</mo></mover><mo>=</mo><mover><mrow><mi>x</mi><mo>.</mo><mi>x</mi></mrow><mo>‾</mo></mover></math></li>
+<li><math><mi>x</mi><mo>.</mo><mi>y</mi><mo>=</mo><mover><mrow><mover><mrow><mi>x</mi><mo>.</mo><mi>y</mi></mrow><mo>‾</mo></mover><mo>.</mo><mover><mrow><mi>x</mi><mo>.</mo><mi>y</mi></mrow><mo>‾</mo></mover></mrow><mo>‾</mo></mover></math></li>
+<li><math><mi>x</mi><mo>+</mo><mi>y</mi><mo>=</mo><mover><mrow><mover><mrow><mi>x</mi><mo>.</mo><mi>x</mi></mrow><mo>‾</mo></mover><mo>.</mo><mover><mrow><mi>y</mi><mo>.</mo><mi>y</mi></mrow><mo>‾</mo></mover></mrow><mo>‾</mo></mover></math></li>
+</ul>
+</li>
+<li><math><mo>nor</mo></math><ul>
+<li><math><mover><mi>x</mi><mo>‾</mo></mover><mo>=</mo><mover><mrow><mi>x</mi><mo>+</mo><mi>x</mi></mrow><mo>‾</mo></mover></math></li>
+<li><math><mi>x</mi><mo>.</mo><mi>y</mi><mo>=</mo><mover><mrow><mover><mrow><mi>x</mi><mo>+</mo><mi>x</mi></mrow><mo>‾</mo></mover><mo>+</mo><mover><mrow><mi>y</mi><mo>+</mo><mi>y</mi></mrow><mo>‾</mo></mover></mrow><mo>‾</mo></mover></math></li>
+<li><math><mi>x</mi><mo>+</mo><mi>y</mi><mo>=</mo><mover><mrow><mover><mrow><mi>x</mi><mo>+</mo><mi>y</mi></mrow><mo>‾</mo></mover><mo>+</mo><mover><mrow><mi>x</mi><mo>+</mo><mi>y</mi></mrow><mo>‾</mo></mover></mrow><mo>‾</mo></mover></math></li>
+</ul>
+</li>
+</ul>
+<h1>Physical Construction</h1>
+<p>Physical construction requires additional considerations. It must be decided what are the positive and negative voltage levels, which level represents logical <math><mn>0</mn></math> and <math><mn>1</mn></math> and these decisions come with advantages and drawbacks.</p>
+<p>|GND|LOW|LOW threshold|---|HIGH threshold|HIGH|Vsupply|</p>
+<p>Each logic circuit is defined by its input and output thresholds, which must match for the circuits to be able to be connected together. It is common that hte input and output thresholds are not exactly equal, but it is key that the high and low ranges do not overlap and there is enough space between high and low to avoid corruption by noise that would randomly switch levels.</p>
+<p>Another consideration is which level represents logical <math><mn>0</mn></math> and <math><mn>1</mn></math>, the most common approach is to use high as the logical <math><mn>1</mn></math>, which is called positive logic. It is possible to have low represent the logical <math><mn>1</mn></math>, which is called negative logic, but is far less common.</p>
+<h1>Discrete Logic</h1>
+<p>Discrete logic was the standard in the 1960s, it got replaced by integrated logic with the development of better manufacturing techniques. The chip with multiple integrated components is called an integrated circuit, or IC. The integration expanded from low integration (logic gate IC), through medium (basic component ICs) to high integration (microprocessors and GPUs).</p>
+<p>Discrete logic is still used in a limited capacity for some applications that require specific parameters beyond what ICs can deliver (durability, etc).</p>
+<p>Discrete logic has one huge advantage for learning and showcasing functionality, it is possible to build logical systems with LEDs that can be analyzed and debugged visually.</p>
+<h1>Logic Families</h1>
+<p>Logic circuits constructed the same way and with compatible input and output levels are called a logic family. All circuits from a single family must be compatible with each other but there might require conversion to interface with other logic families.</p>
+<h1>RTL Logic</h1>
+<p>There are multiple </p>
