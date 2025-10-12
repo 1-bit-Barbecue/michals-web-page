@@ -75,9 +75,19 @@ async function loadStructure() {
         document.getElementById(`top-menu-${section}`).addEventListener('click', async e => await openSection(dir[section]))
     }
 
+    if (localStorage.getItem('privacy')) {
+        document.getElementById('privacy-banner').classList.add('hidden')
+    }
+
     if (Object.keys(dir).length > 0) {
         openSection(dir[Object.keys(dir)[0]])
     }
+}
+
+async function hidePrivacyBanner() {
+    console.log("confirm")
+    localStorage.setItem('privacy', 'Confirm')
+    document.getElementById('privacy-banner').classList.add('hidden')
 }
 
 async function toggleSideMenu() {
