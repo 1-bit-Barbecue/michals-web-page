@@ -1,6 +1,7 @@
 async function openPage(path) {
     const response = await fetch(path)
     document.getElementById("content").innerHTML = await response.text();
+    window.scrollTo(0, 0)
 }
 
 async function trimNumbering(name) {

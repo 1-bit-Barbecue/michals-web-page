@@ -264,5 +264,5 @@ img {
 }
 
 .media-glyph {
-    width: var(--top-menu-height);
+    width: calc(var(--top-menu-height) / 2);
 }
