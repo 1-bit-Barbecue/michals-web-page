@@ -28,4 +28,4 @@ This is my recommended reading list for all who would like to learn about electr
 - LTSpice [`Version:17.2.4`](https://ltspice.analog.com/software/LTspice.pkg) - I use Windows and MacOS versions but Mac more often
 - KiCad [`Version: 9.0.3`](https://downloads.kicad.org/kicad/macos/explore/stable/download/kicad-unified-universal-9.0.3.dmg) - Tested on MacOS
 - FreCAD [`Version: 0.21.0`](https://github.com/FreeCAD/FreeCAD/releases/tag/0.21.0) - MacOS version is much faster, especially when converting large layouts for 3D printer
-- CHITUBOX Basic - Windows and MacOS versions work the same, compatible with [ELEGOO Mars 3 Pro](https://www.elegoo.cz/produkty/resinove-3d-tiskarny/mars-3-pro/) which I use to develop UV sensitive PCB boards
+- CHITUBOX Basic - I use only the MacOS version, compatible with [ELEGOO Mars 3 Pro](https://www.elegoo.cz/produkty/resinove-3d-tiskarny/mars-3-pro/) which I use to develop UV sensitive PCB boards

@@ -51,7 +51,8 @@ It is possible to avoid the conversion of a source to a sink at the cost of slig
 ## Sources
 
 - [LTSpice simulation](./pages/1_Electronics/2_Analog_Electronics/CurrentMirrors.asc)
-- Dual cascode current source - bias diode-connected transistors included and current set by a single-turn potentiometer (multi-turn version is more precise and reliable) 
+- Dual cascode current source - bias diode-connected transistors included and current set by a single-turn potentiometer (multi-turn version is more precise)
+![Dual cascode source physical construction](./pages/1_Electronics/2_Analog_Electronics/CascodeCurrentSourceSink.png)
     - Size: 25x15mm
     - [KiCad project](./pages/1_Electronics/2_Analog_Electronics/CascodeCurrentSourceSink.KiCad.zip)
     - [FreeCAD project](./pages/1_Electronics/2_Analog_Electronics/CascodeCurrentSourceSink.FCStd)
