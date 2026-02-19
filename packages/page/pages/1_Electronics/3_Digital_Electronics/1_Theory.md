@@ -19,7 +19,7 @@ The [Boolean algebra](https://en.wikipedia.org/wiki/Boolean_algebra) is defined 
     |1|0|0|
     |1|1|1|
 
-- <math><mo>or</mo></math> - the operation results in <math><mn>1</mn></math> if either of its argument are <math><mn>1</mn></math>, otherwise the result is <math><mn>0</mn></math>otherwise
+- <math><mo>or</mo></math> - the operation results in <math><mn>1</mn></math> if either of its argument are <math><mn>1</mn></math>, otherwise the result is <math><mn>0</mn></math> otherwise
 
     |<math><mi>x</mi></math>|<math><mi>y</mi></math>|<math><mi>x</mi><mo>+</mo><mi>y</mi></math>|
     |--|--|--|

@@ -177,7 +177,7 @@ img {
 }
 
 .content {
-    padding: 1em;
+    padding: 0.1em 2em;
     flex-grow: 1;
 }
 
